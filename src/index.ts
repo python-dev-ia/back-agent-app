@@ -22,7 +22,11 @@ app.use('/api/auth', authRoutes);
 
 // Ruta de prueba
 app.get('/api', (req, res) => {
-  res.json({ message: 'API funcionando correctamente' });
+  res.json({ 
+    message: 'API funcionando correctamente',
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development'
+  });
 });
 
 // Iniciar servidor solo si no estamos en Vercel (serverless)
