@@ -97,6 +97,45 @@ Iniciar sesión
 }
 ```
 
+## 🚀 Deployment Gratuito
+
+### Railway (Recomendado)
+
+1. Ve a https://railway.app y conecta tu cuenta GitHub
+2. Click en **"New Project"** → **"Deploy from GitHub repo"**
+3. Selecciona este repositorio
+4. Railway detectará automáticamente Node.js
+5. Agrega las variables de entorno en Railway:
+   - `MONGODB_URI`: Tu URI de MongoDB
+   - `DB_NAME`: Nombre de tu base de datos
+   - `JWT_SECRET`: Tu secret JWT
+   - `JWT_ALGORITHM`: HS256
+   - `JWT_EXP_MINUTES`: 60
+   - `FRONTEND_URL`: URL de tu frontend desplegado
+   - `NODE_ENV`: production
+6. Railway te dará una URL pública automáticamente
+
+### Render
+
+1. Ve a https://render.com y conecta GitHub
+2. Click en **"New +"** → **"Web Service"**
+3. Conecta este repositorio
+4. Configuración:
+   - **Build Command**: `npm install && npm run build`
+   - **Start Command**: `npm start`
+5. Agrega las mismas variables de entorno
+6. Render te dará una URL como: `https://tu-app.onrender.com`
+
+### Vercel (Serverless)
+
+1. Ve a https://vercel.com y conecta GitHub
+2. Importa este repositorio
+3. Vercel detectará la configuración en `vercel.json`
+4. Agrega las variables de entorno
+5. Deploy automático
+
+**Nota**: Vercel puede tener cold starts. Railway/Render son mejores para backends Express.
+
 ## Estructura del proyecto
 
 ```
@@ -111,5 +150,7 @@ back-agent-app/
 │   └── index.ts               # Servidor principal
 ├── tsconfig.json
 ├── package.json
+├── vercel.json                # Configuración Vercel
+├── railway.json               # Configuración Railway
 └── .env
 ```
